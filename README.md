@@ -2,7 +2,7 @@ The source code for Hegel, a method to discover causal factors in high dimension
 
 To generate the synthetic datasets, run the following command:
 
-matlab synthesize.m
+**matlab synthesize.m**
 
 Above command will produces a compound causal discovery (CCD) dataset in csv format, including features, confounders, output, and indices of causal features, based on the specified parameters at the beginning of the script:
 
@@ -29,7 +29,7 @@ sp = 3/4;% distribution mean of 1D Prior Score
 
 To generate the synthetic datasets with the same configuration as the ones used in the manuscript, call synthesize_wrapper.m script:
 
-matlab synthesize_wrapper.m
+**matlab synthesize_wrapper.m**
 
 
 It is a wrapper script that makes call to the synthesize function included in synthesize.m
@@ -37,9 +37,9 @@ It is a wrapper script that makes call to the synthesize function included in sy
 ----------------------
 To run the search phase on the generated datasets, run the following python code:
 
-python sgd.py
+**python sgd.py**
 
-python post_process_data_params.py
+**python post_process_data_params.py**
 
 The above two commands processess the synthetic dataset, and after post-processing the results, produces a text file beam.txt which contains the survived elements in the beam.
 
