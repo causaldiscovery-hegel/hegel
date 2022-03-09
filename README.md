@@ -43,6 +43,9 @@ To run the search phase on the generated datasets, run the following python code
 
 The above two commands processess the synthetic dataset, and after post-processing the results, produces a text file beam.txt which contains the survived elements in the beam.
 
+
 To run the assembly ans evaluation phase, run the following command:
+
+
 **matlab -nodisplay -nosplash -nodesktop -r "run('AE.m');exit;"**
 
