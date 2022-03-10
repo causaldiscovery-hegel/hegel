@@ -11,7 +11,7 @@ sp_active = 0;% distribution mean of 1D Prior Score
 
 
 
-root_directory = "/home/aliarab/scratch/sgd4/sim_data/data_params"
+root_directory = "/home/"
 
 if n_active
     fprintf("running:\n")
