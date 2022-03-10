@@ -1025,7 +1025,51 @@ def draw_PCA(d, s, X, path):
     ax.grid()
     plt.show()
 
+def post_process_result(input_path, output_path):
+        [X, Y, V, W, true_causes] = readData_sim(input_path, return_true_causes=True)
+        [selectors, original_features, sg_to_index] = createSelectors(X, [])
+        with open(os.path.join(output_path,"res.pkl"), "rb") as f:
+            beam = pickle.load(f)
+        found_sgs=[]
+        print (beam)
+        beam_selectors = set()
+        for pair in beam:
+            found_sgs.append(pair[1])
+            for sel in pair[1].selectors:
+                beam_selectors.add(sel)
+        refined_X = []
+        column_names= []
+        for sel in beam_selectors:
+            column_names.append(str(sel))
+            sel_id = sg_to_index[sel] 
+            refined_X.append(list(sel.covers(X)))
+        refined_X.append(Y["outcome"])
+        column_names.append("outcome")
+        refined_X = np.array(refined_X)
+        print ("X shape")
+        print(refined_X.shape)  
+        print (len(column_names))
+        print ()
+        df = pd.DataFrame(refined_X.T, columns=column_names)
+        df.to_csv("D.csv", index=None)
+        with open(os.path.join(output_path,"columns_names.csv"), 'w') as f:
+            for item in column_names:
+                f.write("%s\n" % item)
+        print (X)
+        print (refined_X)
 
+def main_sgd(input_path, output_path, u , beam_width, weight):
+    target = createTarget("outcome",True)
+    print (input_path)
+    print (output_path)
+    [X, Y, V, W] = readData_sim(input_path)    
+    result = beamSearch_auxData_adaptive_efficient(V,W,target, X, Y, "", max_depth=2, beam_width=beam_width, result_set_size=5, threshold=0, u=u, weight=weight, min_support=5)
+    output_file_path = os.path.join(output_path, "res.pkl")
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+    with open(output_file_path, "wb") as f:
+        pickle.dump(result[0], f)       
+    return result
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
