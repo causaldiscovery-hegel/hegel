@@ -37,7 +37,10 @@ It is a wrapper script that makes call to the synthesize function included in sy
 ----------------------
 To run the algorithm on a dataset, run the following python code:
 
-**python main.py --input_path "path/to/dataset/" --output_path "/output/path" --u 50 --beam_width 10 --weight 2**
+**python main.py --input_path "path/to/dataset/" --u 50 --beam_width 10 --weight 2**
+
+
+Running the above commands produces two output files, compounds.txt and columns_names.csv. copounds.txt contains the list of causal compounds, with each line identying and one compound. The corresponding selectors for IDs in this file can be found in columns_names.csv.
 
 
 
