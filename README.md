@@ -35,17 +35,9 @@ To generate the synthetic datasets with the same configuration as the ones used 
 It is a wrapper script that makes call to the synthesize function included in synthesize.m
 
 ----------------------
-To run the search phase on the generated datasets, run the following python code:
+To run the algorithm on a dataset, run the following python code:
 
-**python sgd.py**
-
-**python post_process_data_params.py**
-
-The above two commands processess the synthetic dataset, and after post-processing the results, produces a text file beam.txt which contains the survived elements in the beam.
+**python main.py --input_path "path/to/dataset/" --output_path "/output/path" --u 50 --beam_width 10 --weight 2**
 
 
-To run the assembly and evaluation phases, run the following command:
-
-
-**matlab -nodisplay -nosplash -nodesktop -r "run('AE.m');exit;"**
 
