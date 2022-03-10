@@ -32,3 +32,4 @@ loglog(1:n, (FDR/nHyp)*[1:n], 1:n, sort(P), '.-');
 xlim([1 n]); grid minor; xlabel('Potential Cause'); ylabel('P-value');
 legend('BH Baseline','Hypotheses','Location','northwest')
 Results = table(ID,P)
+writetable(Results, "compounds.txt")
