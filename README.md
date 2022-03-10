@@ -40,7 +40,7 @@ To run the algorithm on a dataset, run the following python command:
 **python main.py --input_path "path/to/dataset/" --u 50 --beam_width 10 --weight 2**
 
 
-Running the above command produces two output files, compounds.txt and columns_names.csv, where copounds.txt contains the list of causal compounds, with each line identifying one compound. The corresponding selectors for IDs in this file can be found in columns_names.csv.
+Running the above command produces two output files, compounds.txt and columns_names.csv, in the current directory, where copounds.txt contains the list of causal compounds, with each line identifying one compound. The corresponding selectors for IDs in this file can be found in columns_names.csv.
 
 
 
